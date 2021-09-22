@@ -1,6 +1,6 @@
 {
   "name": "@privacyresearch/ed25519-ts",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "TypeScript implementation of ed25519 & ristretto255 allowing BigInt and SHA dependency injection",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
