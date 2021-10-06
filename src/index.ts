@@ -7,6 +7,7 @@ import { ExtendedPointStatic, makeExtendedPointClass, makePointClass, PointStati
 import { BigIntType, Integers } from './integers'
 import { makeUtils, UtilsType } from './utils'
 import { makeSigningFunctions, SigningFunctions } from './signing'
+import { Scalars } from './scalars'
 
 export * from './integers'
 export * from './native-bigint'
@@ -23,6 +24,8 @@ export interface Ed25519Type<BIT extends BigIntType> extends SigningFunctions<BI
     keyUtils: KeyUtils<BIT>
     CURVE: CurveType<BIT>
     utils: UtilsType
+    Ints: Integers<BIT>
+    scalars: Scalars<BIT>
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -33,6 +36,7 @@ export function makeED<BIT extends BigIntType>(Ints: Integers<BIT>, sha512Impl?:
     const CONSTANTS = makeConstants(toBigInt)
     const math = new MathFunctions(Ints, CURVE, CONSTANTS)
     const keyUtils = new KeyUtils(Ints, CURVE, serializer, math)
+    const scalars = new Scalars(Ints, CURVE, serializer, math)
 
     // Default Point works in default aka affine coordinates: (x, y)
     // Extended Point works in extended coordinates: (x, y, z, t) ∋ (x=x/z, y=y/z, t=xy)
@@ -67,5 +71,7 @@ export function makeED<BIT extends BigIntType>(Ints: Integers<BIT>, sha512Impl?:
         getPublicKey,
         Signature,
         keyUtils,
+        Ints,
+        scalars,
     }
 }
