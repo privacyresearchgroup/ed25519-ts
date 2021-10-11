@@ -1,6 +1,6 @@
-# Bring your own integers to ed25519
+# Ed25519 and Ristretto255 with Injectable BigInt and Hash Dependencies
 
-This is an efficient implementation of [ed25519](https://en.wikipedia.org/wiki/EdDSA) that can be used with any integer arithmetic library that implements a standard interface based on [JSBI](https://github.com/GoogleChromeLabs/jsbi). This allows `pr-ed25519` to be used on platforms where native `bigint`s are not available (e.g. React Native) or with other libraries that may have different performance or security characteristics. The package also allows injection of a SHA-512 dependency, allowing users to
+This is an efficient implementation of [ed25519](https://en.wikipedia.org/wiki/EdDSA) that can be used with any integer arithmetic library that implements a standard interface based on [JSBI](https://github.com/GoogleChromeLabs/jsbi). This allows `ed25519-ts` to be used on platforms where native `bigint`s are not available (e.g. React Native) or with other libraries that may have different performance or security characteristics. The package also allows injection of a SHA-512 dependency, allowing users to
 select native versions when possible and best alternatives when not.
 
 Cryptographic features include:
